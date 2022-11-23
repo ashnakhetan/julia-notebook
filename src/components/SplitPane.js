@@ -86,20 +86,15 @@ export const SplitPaneTop = (props) => {
 
 	return (
 		<div {...props} className="split-pane-top" ref={topRef}>
-			<h1>Famous quotes:</h1>
-			<ul>
-				<li>hi</li>
-			</ul>
+			top top top
 		</div>
 	);
 };
 
 export const SplitPaneBottom = (props) => {
-	const { currQuote } = useContext(ReferencePaneCtxt);
-
 	return (
 		<div {...props} className="split-pane-bottom">
-			Current <b>quote id</b>: {currQuote}
+			bottom
 		</div>
 	);
 };
@@ -118,13 +113,17 @@ export const SplitPaneLeft = (props) => {
 		topRef.current.style.maxWidth = clientWidth + "px";
 	}, [clientWidth]);
 
-	return <div {...props} className="split-pane-left" ref={topRef} />;
+	return (
+		<div {...props} className="split-pane-left" ref={topRef}>
+			left side
+		</div>
+	);
 };
 
 export const SplitPaneRight = (props) => {
 	return (
 		<div {...props} className="split-pane-right">
-			<div className="quote">hteh yeyr</div>
+			right side
 		</div>
 	);
 };
