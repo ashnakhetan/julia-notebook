@@ -99,7 +99,7 @@ export const SplitPaneBottom = (props) => {
 
 	return (
 		<div {...props} className="split-pane-bottom">
-			Current <b>quote id</b>: {currQuote}
+			{/* Current <b>quote id</b>: {currQuote} */}
 		</div>
 	);
 };

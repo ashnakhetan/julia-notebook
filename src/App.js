@@ -19,8 +19,8 @@ function App() {
 				<SplitPane className="split-pane-row">
 					<SplitPaneLeft>
 						<SplitPane className="split-pane-col">
-							<SplitPaneTop />
-							<Divider className="separator-row" />
+							{/* <SplitPaneTop /> */}
+							{/* <Divider className="separator-row" /> */}
 							<SplitPaneBottom />
 						</SplitPane>
 					</SplitPaneLeft>
