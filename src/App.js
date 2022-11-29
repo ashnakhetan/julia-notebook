@@ -1,18 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
-import SplitPane, {
-	Divider,
-	SplitPaneBottom,
-	SplitPaneLeft,
-	SplitPaneRight,
-	SplitPaneTop,
-} from "./components/SplitPane";
-import { useState } from "react";
-import ReferencePaneCtxt from "./components/ReferencePaneCtxt";
 
 function App() {
-	const [currQuote, setCurrQuote] = useState(1);
-
 	return (
 		<div className="App">
 			<ReferencePaneCtxt.Provider value={{}}>
