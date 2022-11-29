@@ -64,7 +64,7 @@ export default function NoteTakingPane() {
 					))}
 				</Layer>
 			</Stage>
-			<select
+			{/* <select
 				value={tool}
 				onChange={(e) => {
 					setTool(e.target.value);
@@ -72,7 +72,7 @@ export default function NoteTakingPane() {
 			>
 				<option value="pen">Pen</option>
 				<option value="eraser">Eraser</option>
-			</select>
+			</select> */}
 		</div>
 	);
 }
