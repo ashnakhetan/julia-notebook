@@ -17,6 +17,8 @@ export default function ReferencePane(props) {
 		setNumPages(numPages);
 	}
 
+	const options = {};
+
 	return (
 		<div className="referencePane">
 			{/* <ul>
@@ -25,8 +27,12 @@ export default function ReferencePane(props) {
 				})}
 			</ul> */}
 
-			<Document file={bayes} onLoadSuccess={onDocumentLoadSuccess}>
-				{/* TODO: this makes the page go away on resize... */}
+			<Document
+				file={bayes}
+				onLoadSuccess={onDocumentLoadSuccess}
+				options={options}
+			>
+				{/* TODO: this makes the page load really slowly on resize... */}
 				{Array.from(new Array(numPages), (el, index) => (
 					<Page
 						key={`page_${index + 1}`}
