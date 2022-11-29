@@ -1,12 +1,22 @@
 import "./App.css";
-import NoteTakingPane from "./components/NoteTakingPane/NoteTakingPane";
-import ReferencePane from "./components/ReferencePane/ReferencePane";
 
 function App() {
 	return (
 		<div className="App">
-			<ReferencePane />
-			<NoteTakingPane />
+			<ReferencePaneCtxt.Provider value={{}}>
+				<SplitPane className="split-pane-row">
+					<SplitPaneLeft>
+						<SplitPane className="split-pane-col">
+							{/* <SplitPaneTop /> */}
+							{/* <Divider className="separator-row" /> */}
+							<SplitPaneBottom />
+						</SplitPane>
+					</SplitPaneLeft>
+					<Divider className="separator-col" />
+
+					<SplitPaneRight />
+				</SplitPane>
+			</ReferencePaneCtxt.Provider>
 		</div>
 	);
 }
