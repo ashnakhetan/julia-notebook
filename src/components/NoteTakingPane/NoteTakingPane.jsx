@@ -1,5 +1,5 @@
 import { React } from "react";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Stage, Layer, Line, Text } from "react-konva";
 
 export default function NoteTakingPane() {
@@ -52,7 +52,7 @@ export default function NoteTakingPane() {
 						<Line
 							key={i}
 							points={line.points}
-							stroke="#df4b26"
+							stroke="#000"
 							strokeWidth={5}
 							tension={0.5}
 							lineCap="round"

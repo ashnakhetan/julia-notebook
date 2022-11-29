@@ -12,25 +12,7 @@
 }
 
 .noteTakingPane,
-.referencePane {
-	margin: 0;
-	display: inline-block;
-	height: calc(100% - 8px);
-	position: absolute;
-	top: 0;
-}
-
-.referencePane {
-	border: 4px solid red;
-	width: calc(40% - 4px);
-	left: 0;
-	font-size: xx-large;
-}
-
-.noteTakingPane {
-	border: 4px solid green;
-	width: calc(60% - 8px);
-	left: 40%;
+.separator-col {
 	/* Because we're handling it */
 	touch-action: none;
 }

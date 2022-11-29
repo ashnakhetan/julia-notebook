@@ -5,8 +5,9 @@ import React, {
 	useRef,
 	useState,
 } from "react";
-import ReferencePaneCtxt from "./ReferencePaneCtxt";
 import NoteTakingPaneCtxt from "./NoteTakingPaneCtxt";
+import NoteTakingPane from "./NoteTakingPane/NoteTakingPane";
+import ReferencePane from "./ReferencePane/ReferencePane";
 
 const SplitPane = ({ children, ...props }) => {
 	const [clientHeight, setClientHeight] = useState(null);
@@ -14,9 +15,23 @@ const SplitPane = ({ children, ...props }) => {
 	const yDividerPos = useRef(null);
 	const xDividerPos = useRef(null);
 
+	const getCoords = (e) => {
+		e.preventDefault(); // We don't want to scroll
+
+		if (e.pointerType === "mouse") {
+			return { x: e.clientX, y: e.clientY };
+		} else {
+			return { x: e.screenX, y: e.screenY };
+		}
+	};
+
 	const onMouseHoldDown = (e) => {
-		yDividerPos.current = e.clientY;
-		xDividerPos.current = e.clientX;
+		e.preventDefault(); // We don't want to scroll
+
+		const coords = getCoords(e);
+
+		yDividerPos.current = coords.y;
+		xDividerPos.current = coords.x;
 	};
 
 	const onMouseHoldUp = () => {
@@ -25,24 +40,26 @@ const SplitPane = ({ children, ...props }) => {
 	};
 
 	const onMouseHoldMove = (e) => {
+		e.preventDefault(); // We don't want to scroll
 		if (!yDividerPos.current && !xDividerPos.current) {
 			return;
 		}
+		const coords = getCoords(e);
 
-		setClientHeight(clientHeight + e.clientY - yDividerPos.current);
-		setClientWidth(clientWidth + e.clientX - xDividerPos.current);
+		setClientHeight(clientHeight + coords.y - yDividerPos.current);
+		setClientWidth(clientWidth + coords.x - xDividerPos.current);
 
-		yDividerPos.current = e.clientY;
-		xDividerPos.current = e.clientX;
+		yDividerPos.current = coords.y;
+		xDividerPos.current = coords.x;
 	};
 
 	useEffect(() => {
-		document.addEventListener("mouseup", onMouseHoldUp);
-		document.addEventListener("mousemove", onMouseHoldMove);
+		document.addEventListener("pointerup", onMouseHoldUp);
+		document.addEventListener("pointermove", onMouseHoldMove);
 
 		return () => {
-			document.removeEventListener("mouseup", onMouseHoldUp);
-			document.removeEventListener("mousemove", onMouseHoldMove);
+			document.removeEventListener("pointerup", onMouseHoldUp);
+			document.removeEventListener("pointermove", onMouseHoldMove);
 		};
 	});
 
@@ -66,37 +83,7 @@ const SplitPane = ({ children, ...props }) => {
 export const Divider = (props) => {
 	const { onMouseHoldDown } = useContext(NoteTakingPaneCtxt);
 
-	return <div {...props} onMouseDown={onMouseHoldDown} />;
-};
-
-export const SplitPaneTop = (props) => {
-	const topRef = createRef();
-	const { clientHeight, setClientHeight } = useContext(NoteTakingPaneCtxt);
-	const { quotes, setCurrQuote } = useContext(ReferencePaneCtxt);
-
-	useEffect(() => {
-		if (!clientHeight) {
-			setClientHeight(topRef.current.clientHeight);
-			return;
-		}
-
-		topRef.current.style.minHeight = clientHeight + "px";
-		topRef.current.style.maxHeight = clientHeight + "px";
-	}, [clientHeight]);
-
-	return (
-		<div {...props} className="split-pane-top" ref={topRef}>
-			top top top
-		</div>
-	);
-};
-
-export const SplitPaneBottom = (props) => {
-	return (
-		<div {...props} className="split-pane-bottom">
-			bottom
-		</div>
-	);
+	return <div {...props} onPointerDown={onMouseHoldDown} />;
 };
 
 export const SplitPaneLeft = (props) => {
@@ -111,11 +98,11 @@ export const SplitPaneLeft = (props) => {
 
 		topRef.current.style.minWidth = clientWidth + "px";
 		topRef.current.style.maxWidth = clientWidth + "px";
-	}, [clientWidth]);
+	});
 
 	return (
 		<div {...props} className="split-pane-left" ref={topRef}>
-			left side
+			<ReferencePane />
 		</div>
 	);
 };
@@ -123,7 +110,7 @@ export const SplitPaneLeft = (props) => {
 export const SplitPaneRight = (props) => {
 	return (
 		<div {...props} className="split-pane-right">
-			right side
+			<NoteTakingPane />
 		</div>
 	);
 };
