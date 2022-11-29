@@ -11,6 +11,10 @@
 	min-height: 100%;
 }
 
+.referencePane {
+	overflow-y: scroll;
+}
+
 .noteTakingPane,
 .separator-col {
 	/* Because we're handling it */
