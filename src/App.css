@@ -13,6 +13,7 @@
 
 .referencePane {
 	overflow-y: scroll;
+	width: min-content;
 }
 
 .noteTakingPane,

@@ -38,12 +38,9 @@ body {
 	flex-direction: row;
 }
 
-.split-pane-top,
-.split-pane-bottom,
-.split-pane-right,
 .split-pane-left {
 	flex: 1;
-	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .split-pane-right {
@@ -57,6 +54,8 @@ body {
 		),
 		linear-gradient(#eee 0.1em, transparent 0.1em);
 	background-size: 100% 1.2em;
+	overflow: hidden;
+	flex: 1;
 }
 
 .split-pane-top,
@@ -69,7 +68,7 @@ body {
 .separator-col {
 	border: 5px solid black;
 	cursor: col-resize;
-	width: 100px;
+	width: 30px;
 }
 
 .separator-row {
