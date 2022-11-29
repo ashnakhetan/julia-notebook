@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/julia-notebook/static/css/main.ba98f1d1.css",
+    "main.js": "/julia-notebook/static/js/main.b456cf4b.js",
+    "static/js/787.714bf96f.chunk.js": "/julia-notebook/static/js/787.714bf96f.chunk.js",
+    "static/media/pdf.worker.js": "/julia-notebook/static/media/pdf.worker.6b73e7049d1495be7070.js",
+    "static/media/Bayes' Theorem.pdf": "/julia-notebook/static/media/Bayes' Theorem.48d823c5f2b50c5442a0.pdf",
+    "index.html": "/julia-notebook/index.html",
+    "main.ba98f1d1.css.map": "/julia-notebook/static/css/main.ba98f1d1.css.map",
+    "main.b456cf4b.js.map": "/julia-notebook/static/js/main.b456cf4b.js.map",
+    "787.714bf96f.chunk.js.map": "/julia-notebook/static/js/787.714bf96f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba98f1d1.css",
+    "static/js/main.b456cf4b.js"
+  ]
+}
