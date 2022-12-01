@@ -1,6 +1,11 @@
 import { React } from "react";
 import { useState, useRef } from "react";
 import { Stage, Layer, Line, Text } from "react-konva";
+import brush from "../../assets/icons/brush.svg";
+import circle from "../../assets/icons/circle.svg";
+import eraser from "../../assets/icons/eraser.svg";
+import rectangle from "../../assets/icons/rectangle.svg";
+import triangle from "../../assets/icons/triangle.svg";
 
 export default function NoteTakingPane() {
 	const [tool, setTool] = useState("pen");
@@ -39,6 +44,58 @@ export default function NoteTakingPane() {
 	};
 
 	return (
+		<div>
+		<div class="container">
+            <section class="tools-board">
+                <div class="row">
+                        <ul class="options">
+                            <li class="option tool" id="rectangle">
+                            <img src={rectangle} alt=""></img>
+                            </li>
+                            <li class="option tool" id="circle">
+                            <img src={circle} alt=""></img>
+                            </li>
+                            <li class="option tool" id="triangle">
+                            <img src={triangle} alt=""></img>
+                            </li>
+                        </ul>
+                </div>        
+                <div class="row">
+                        <ul class="options">
+                            {/* <li class="option active tool" id="brush">
+                            <img src={brush} alt="" value="pen"
+							onClick={(e) => {setTool(e.target.value);}}></img>
+                            </li> */}
+                            {/* <li class="option tool" id="eraser">
+                            <img src={eraser} alt="" value="eraser"
+							onClick={(e) => {setTool(e.target.value);}}></img>
+                            </li> */}
+							<button value="pen"
+								onClick={(e) => {setTool(e.currentTarget.value);}}>
+								<img src={brush} alt="" ></img>
+							</button>
+							<button value="eraser"
+								onClick={(e) => {setTool(e.currentTarget.value);}}> 
+								<img src={eraser} alt=""></img>
+							</button>
+                            <li class="option">
+                            <input type="range" id="size-slider" min="1" max="30" value="5"></input> 
+                            </li>
+                        </ul>
+                </div>
+                <div class="row colors">
+                        <ul class="options">
+                            <li class="option"></li>
+                            <li class="option selected"></li>
+                            <li class="option"></li>
+                            <li class="option"></li>
+                            <li class="option">
+                            <input type="color" id="color-picker" value="#4A98F7"></input>
+                            </li>
+                        </ul>
+                </div>
+            </section>
+        </div>
 		<div className="noteTakingPane">
 			<Stage
 				width={1000}
@@ -73,6 +130,7 @@ export default function NoteTakingPane() {
 				<option value="pen">Pen</option>
 				<option value="eraser">Eraser</option>
 			</select> */}
+		</div>
 		</div>
 	);
 }
