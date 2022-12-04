@@ -28,6 +28,7 @@ export default function NoteTakingPane() {
 
 	const handleMouseMove = (e) => {
 		e.evt.preventDefault();
+
 		// no drawing - skipping
 		if (!isDrawing.current) {
 			return;
