@@ -1,6 +1,6 @@
 import { React } from "react";
 import { useState, useRef } from "react";
-import { Stage, Layer, Line, Text, Rect} from "react-konva";
+import { Stage, Layer, Line, Text, Rect } from "react-konva";
 import brush from "../../assets/icons/brush.svg";
 import circle from "../../assets/icons/circle.svg";
 import eraser from "../../assets/icons/eraser.svg";
@@ -23,7 +23,7 @@ export default function NoteTakingPane() {
 
 		isDrawing.current = true;
 		const pos = e.target.getStage().getPointerPosition();
-		setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+		setLines([...lines, { tool, points: [pos.x, pos.y], color }]);
 	};
 
 	const handleMouseMove = (e) => {
@@ -33,15 +33,15 @@ export default function NoteTakingPane() {
 			return;
 		}
 		//if (tool === "pen" || tool === "eraser") {
-			const stage = e.target.getStage();
-			const point = stage.getPointerPosition();
-			let lastLine = lines[lines.length - 1];
-			// add point
-			lastLine.points = lastLine.points.concat([point.x, point.y]);
+		const stage = e.target.getStage();
+		const point = stage.getPointerPosition();
+		let lastLine = lines[lines.length - 1];
+		// add point
+		lastLine.points = lastLine.points.concat([point.x, point.y]);
 
-			// replace last
-			lines.splice(lines.length - 1, 1, lastLine);
-			setLines(lines.concat());
+		// replace last
+		lines.splice(lines.length - 1, 1, lastLine);
+		setLines(lines.concat());
 		// } else if (tool  === "rectangle") {
 		// 	drawRect(e);
 		// } else if (tool  === "circle") {
@@ -49,7 +49,6 @@ export default function NoteTakingPane() {
 		// } else {
 		// 	drawTriangle(e);
 		// }
-		
 	};
 
 	const handleMouseUp = (e) => {
@@ -57,7 +56,6 @@ export default function NoteTakingPane() {
 
 		isDrawing.current = false;
 		// setRect(false);
-
 	};
 
 	// const drawRect = (e) => {
@@ -67,7 +65,6 @@ export default function NoteTakingPane() {
 	// 	setEndX(point.x);
 	// 	setEndY(point.y);
 	// 	// setRect(true);
-
 
 	// 	// return (
 	// 	// 	<Rect
@@ -81,39 +78,40 @@ export default function NoteTakingPane() {
 	// }
 
 	// const drawCircle = (e) => {
-		
+
 	// }
 
 	// const drawTriangle = (e) => {
-		
+
 	// }
 
 	const chooseTool = (e) => {
 		document.querySelector(".options .active").classList.remove("active");
 		e.currentTarget.classList.add("active");
 		setTool(e.currentTarget.id);
-	}
+	};
 
 	const chooseColor = (e) => {
 		//e.evt.preventDefault();
 		document.querySelector(".options .selected").classList.remove("selected");
 		e.target.classList.add("selected");
-		let col = window.getComputedStyle(e.target).getPropertyValue("background-color");
+		let col = window
+			.getComputedStyle(e.target)
+			.getPropertyValue("background-color");
 		console.log("color: ", col);
 		setColor(col);
-
-	}
+	};
 
 	const pickColor = (e) => {
-		e.target.parentElement.style.background = e.target.value;  //e.target????
+		e.target.parentElement.style.background = e.target.value; //e.target????
 		e.target.parentElement.click();
-	}
+	};
 
 	return (
 		<div>
-		<div class="container">
-            <section class="tools-board">
-                {/* <div class="row">
+			<div className="container">
+				<section className="tools-board">
+					{/* <div class="row">
                         <ul class="options">
                             <li class="option tool" id="rectangle" onClick={chooseTool}>
                             <img src={rectangle} alt=""></img>
@@ -126,57 +124,70 @@ export default function NoteTakingPane() {
                             </li>
                         </ul>
                 </div>         */}
-                <div class="row">
-                        <ul class="options">
-							<button class="option active tool" id="pen" value="pen"
-								onClick={chooseTool}>
-								<img src={brush} alt="" ></img>
+					<div className="row">
+						<ul className="options">
+							<button
+								className="option active tool"
+								id="pen"
+								value="pen"
+								onClick={chooseTool}
+							>
+								<img src={brush} alt=""></img>
 							</button>
-							<button class="option tool" id="eraser" value="eraser"
-								onClick={chooseTool}> 
+							<button
+								className="option tool"
+								id="eraser"
+								value="eraser"
+								onClick={chooseTool}
+							>
 								<img src={eraser} alt=""></img>
 							</button>
-                        </ul>
-                </div>
-                <div class="row colors">
-                        <ul class="options">
-                            <li class="option" onClick={chooseColor}></li>
-                            <li class="option selected" onClick={chooseColor}></li>
-                            <li class="option" onClick={chooseColor}></li>
-                            <li class="option" onClick={chooseColor}></li>
-                            <li class="option" onClick={chooseColor}>
-                            <input type="color" id="color-picker" value="#4A98F7" onChange={pickColor}></input>
-                            </li>
-                        </ul>
-                </div>
-            </section>
-        </div>
-		<div className="noteTakingPane">
-			<Stage
-				width={1000}
-				height={1000}
-				onPointerDown={handleMouseDown}
-				onPointerMove={handleMouseMove}
-				onPointerUp={handleMouseUp}
-			>
-				<Layer>
-					{lines.map((line, i) => (
-						<Line
-							key={i}
-							points={line.points}
-							stroke={color}
-							strokeWidth={5}
-							tension={0.5}
-							lineCap="round"
-							lineJoin="round"
-							globalCompositeOperation={
-								line.tool === "eraser" ? "destination-out" : "source-over"
-							}
-						/>
+						</ul>
+					</div>
+					<div className="row colors">
+						<ul className="options">
+							<li className="option" onClick={chooseColor}></li>
+							<li className="option selected" onClick={chooseColor}></li>
+							<li className="option" onClick={chooseColor}></li>
+							<li className="option" onClick={chooseColor}></li>
+							<li className="option" onClick={chooseColor}>
+								<input
+									type="color"
+									id="color-picker"
+									value="#4A98F7"
+									onChange={pickColor}
+								></input>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</div>
+			<div className="noteTakingPane">
+				<Stage
+					width={1000}
+					height={1000}
+					onPointerDown={handleMouseDown}
+					onPointerMove={handleMouseMove}
+					onPointerUp={handleMouseUp}
+				>
+					<Layer>
+						{lines.map((line, i) => (
+							<Line
+								key={i}
+								points={line.points}
+								stroke={color}
+								strokeWidth={5}
+								tension={0.5}
+								lineCap="round"
+								lineJoin="round"
+								globalCompositeOperation={
+									line.tool === "eraser" ? "destination-out" : "source-over"
+								}
+							/>
 						))}
-				</Layer>
-			</Stage>
-			{/* <select
+					</Layer>
+				</Stage>
+				{/* <select
 				value={tool}
 				onChange={(e) => {
 					setTool(e.target.value);
@@ -185,7 +196,7 @@ export default function NoteTakingPane() {
 				<option value="pen">Pen</option>
 				<option value="eraser">Eraser</option>
 			</select> */}
-		</div>
+			</div>
 		</div>
 	);
 }
