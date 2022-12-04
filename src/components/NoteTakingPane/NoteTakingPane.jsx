@@ -10,13 +10,13 @@ import triangle from "../../assets/icons/triangle.svg";
 export default function NoteTakingPane() {
 	const [tool, setTool] = useState("pen");
 	const [lines, setLines] = useState([]);
-	const [startX, setStartX] = useState();
-	const [startY, setStartY] = useState();
-	const [endX, setEndX] = useState();
-	const [endY, setEndY] = useState();
+	// const [startX, setStartX] = useState();
+	// const [startY, setStartY] = useState();
+	// const [endX, setEndX] = useState();
+	// const [endY, setEndY] = useState();
 	const [color, setColor] = useState("#000");
 	const isDrawing = useRef(false);
-	const [rect, setRect] = useState(false);
+	//const [rect, setRect] = useState(false);
 
 	const handleMouseDown = (e) => {
 		e.evt.preventDefault();
@@ -24,8 +24,6 @@ export default function NoteTakingPane() {
 		isDrawing.current = true;
 		const pos = e.target.getStage().getPointerPosition();
 		setLines([...lines, { tool, points: [pos.x, pos.y] }]);
-		setStartX(pos.x);
-		setStartY(pos.y);
 	};
 
 	const handleMouseMove = (e) => {
@@ -34,25 +32,23 @@ export default function NoteTakingPane() {
 		if (!isDrawing.current) {
 			return;
 		}
-		if (tool === "pen" || tool === "eraser") {
+		//if (tool === "pen" || tool === "eraser") {
 			const stage = e.target.getStage();
 			const point = stage.getPointerPosition();
 			let lastLine = lines[lines.length - 1];
 			// add point
 			lastLine.points = lastLine.points.concat([point.x, point.y]);
-			// setEndX(point.x);
-			// setEndY(point.y);
 
 			// replace last
 			lines.splice(lines.length - 1, 1, lastLine);
 			setLines(lines.concat());
-		} else if (tool  === "rectangle") {
-			drawRect(e);
-		} else if (tool  === "circle") {
-			drawCircle(e);
-		} else {
-			drawTriangle(e);
-		}
+		// } else if (tool  === "rectangle") {
+		// 	drawRect(e);
+		// } else if (tool  === "circle") {
+		// 	drawCircle(e);
+		// } else {
+		// 	drawTriangle(e);
+		// }
 		
 	};
 
@@ -64,33 +60,33 @@ export default function NoteTakingPane() {
 
 	};
 
-	const drawRect = (e) => {
-		// e.evt.preventDefault();
-		const stage = e.target.getStage();
-		const point = stage.getPointerPosition();
-		setEndX(point.x);
-		setEndY(point.y);
-		// setRect(true);
+	// const drawRect = (e) => {
+	// 	// e.evt.preventDefault();
+	// 	const stage = e.target.getStage();
+	// 	const point = stage.getPointerPosition();
+	// 	setEndX(point.x);
+	// 	setEndY(point.y);
+	// 	// setRect(true);
 
 
-		// return (
-		// 	<Rect
-		// 	x={startX}
-		// 	y={startY}
-		// 	width={point.x - startX}
-		// 	height={point.y - startY}
-		// 	fill={color}
-		// 	/>
-		// );
-	}
+	// 	// return (
+	// 	// 	<Rect
+	// 	// 	x={startX}
+	// 	// 	y={startY}
+	// 	// 	width={point.x - startX}
+	// 	// 	height={point.y - startY}
+	// 	// 	fill={color}
+	// 	// 	/>
+	// 	// );
+	// }
 
-	const drawCircle = (e) => {
+	// const drawCircle = (e) => {
 		
-	}
+	// }
 
-	const drawTriangle = (e) => {
+	// const drawTriangle = (e) => {
 		
-	}
+	// }
 
 	const chooseTool = (e) => {
 		document.querySelector(".options .active").classList.remove("active");
@@ -102,8 +98,6 @@ export default function NoteTakingPane() {
 		//e.evt.preventDefault();
 		document.querySelector(".options .selected").classList.remove("selected");
 		e.target.classList.add("selected");
-		//e.target.style.backgroundColor = "pink";
-		// let col = e.target.style.backgroundColor;
 		let col = window.getComputedStyle(e.target).getPropertyValue("background-color");
 		console.log("color: ", col);
 		setColor(col);
@@ -119,7 +113,7 @@ export default function NoteTakingPane() {
 		<div>
 		<div class="container">
             <section class="tools-board">
-                <div class="row">
+                {/* <div class="row">
                         <ul class="options">
                             <li class="option tool" id="rectangle" onClick={chooseTool}>
                             <img src={rectangle} alt=""></img>
@@ -131,30 +125,17 @@ export default function NoteTakingPane() {
                             <img src={triangle} alt=""></img>
                             </li>
                         </ul>
-                </div>        
+                </div>         */}
                 <div class="row">
                         <ul class="options">
-                            {/* <li class="option active tool" id="brush">
-                            <img src={brush} alt="" value="pen"
-							onClick={(e) => {setTool(e.target.value);}}></img>
-                            </li> */}
-                            {/* <li class="option tool" id="eraser">
-                            <img src={eraser} alt="" value="eraser"
-							onClick={(e) => {setTool(e.target.value);}}></img>
-                            </li> */}
 							<button class="option active tool" id="pen" value="pen"
-								// onClick={(e) => {setTool(e.currentTarget.value);}}
 								onClick={chooseTool}>
 								<img src={brush} alt="" ></img>
 							</button>
 							<button class="option tool" id="eraser" value="eraser"
-								// onClick={(e) => {setTool(e.currentTarget.value);}}
 								onClick={chooseTool}> 
 								<img src={eraser} alt=""></img>
 							</button>
-                            <li class="option">
-                            <input type="range" id="size-slider" min="1" max="30" value="5"></input> 
-                            </li>
                         </ul>
                 </div>
                 <div class="row colors">
@@ -193,15 +174,6 @@ export default function NoteTakingPane() {
 							}
 						/>
 						))}
-						{/* {{rect} === true ?
-						<Rect
-							x={startX}
-							y={startY}
-							width={endX - startX}
-							height={endY - startY}
-							fill={color}
-							/>
-						: <Rect/> } */}
 				</Layer>
 			</Stage>
 			{/* <select

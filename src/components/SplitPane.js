@@ -8,7 +8,6 @@ import React, {
 import NoteTakingPaneCtxt from "./NoteTakingPaneCtxt";
 import NoteTakingPane from "./NoteTakingPane/NoteTakingPane";
 import ReferencePane from "./ReferencePane/ReferencePane";
-import Toolbar from "./Toolbar";
 
 const SplitPane = ({ children, ...props }) => {
 	const [clientHeight, setClientHeight] = useState(null);
@@ -112,7 +111,6 @@ export const SplitPaneLeft = (props) => {
 export const SplitPaneRight = (props) => {
 	return (
 		<div {...props} className="split-pane-right">
-			{/* <Toolbar /> */}
 			<NoteTakingPane />
 		</div>
 	);
