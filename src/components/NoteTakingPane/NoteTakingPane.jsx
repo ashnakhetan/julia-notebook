@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useContext } from "react";
 import { useState, useRef } from "react";
 import { Stage, Layer, Line, Text, Rect } from "react-konva";
 import brush from "../../assets/icons/brush.svg";
@@ -6,8 +6,11 @@ import circle from "../../assets/icons/circle.svg";
 import eraser from "../../assets/icons/eraser.svg";
 import rectangle from "../../assets/icons/rectangle.svg";
 import triangle from "../../assets/icons/triangle.svg";
+import ReferencePaneCtxt from "../ReferencePaneCtxt";
 
 export default function NoteTakingPane() {
+	const { isPDFview, setIsPDFview } = useContext(ReferencePaneCtxt);
+
 	const [tool, setTool] = useState("pen");
 	const [lines, setLines] = useState([]);
 	// const [startX, setStartX] = useState();
@@ -108,10 +111,18 @@ export default function NoteTakingPane() {
 		e.target.parentElement.click();
 	};
 
+	const changeReferenceView = () => {
+		setIsPDFview(!isPDFview);
+	};
+
 	return (
-		<div>
-			<div className="container">
-				<section className="tools-board">
+		<div className="noteTakingPane">
+			<div className="controls">
+				<div className="searchBar" onClick={changeReferenceView}>
+					{" "}
+					{isPDFview ? "annotation view" : "PDF view"}
+				</div>
+				<div className="tools-board">
 					{/* <div class="row">
                         <ul class="options">
                             <li class="option tool" id="rectangle" onClick={chooseTool}>
@@ -161,34 +172,34 @@ export default function NoteTakingPane() {
 							</li>
 						</ul>
 					</div>
-				</section>
+				</div>
 			</div>
-			<div className="noteTakingPane">
-				<Stage
-					width={1000}
-					height={1000}
-					onPointerDown={handleMouseDown}
-					onPointerMove={handleMouseMove}
-					onPointerUp={handleMouseUp}
-				>
-					<Layer>
-						{lines.map((line, i) => (
-							<Line
-								key={i}
-								points={line.points}
-								stroke={color}
-								strokeWidth={5}
-								tension={0.5}
-								lineCap="round"
-								lineJoin="round"
-								globalCompositeOperation={
-									line.tool === "eraser" ? "destination-out" : "source-over"
-								}
-							/>
-						))}
-					</Layer>
-				</Stage>
-				{/* <select
+			<Stage
+				className="drawingArea"
+				width={1000}
+				height={1000}
+				onPointerDown={handleMouseDown}
+				onPointerMove={handleMouseMove}
+				onPointerUp={handleMouseUp}
+			>
+				<Layer>
+					{lines.map((line, i) => (
+						<Line
+							key={i}
+							points={line.points}
+							stroke={color}
+							strokeWidth={5}
+							tension={0.5}
+							lineCap="round"
+							lineJoin="round"
+							globalCompositeOperation={
+								line.tool === "eraser" ? "destination-out" : "source-over"
+							}
+						/>
+					))}
+				</Layer>
+			</Stage>
+			{/* <select
 				value={tool}
 				onChange={(e) => {
 					setTool(e.target.value);
@@ -197,7 +208,6 @@ export default function NoteTakingPane() {
 				<option value="pen">Pen</option>
 				<option value="eraser">Eraser</option>
 			</select> */}
-			</div>
 		</div>
 	);
 }
