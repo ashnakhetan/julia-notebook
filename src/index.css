@@ -76,6 +76,12 @@ body {
 	touch-action: none;
 }
 
+.referencePane {
+	/* Because we're handling it */
+	touch-action: none;
+	position: relative;
+}
+
 .konvajs-content {
 	/* Because we're handling it */
 	touch-action: none;

@@ -83,7 +83,13 @@ const SplitPane = ({ children, ...props }) => {
 export const Divider = (props) => {
 	const { onMouseHoldDown } = useContext(NoteTakingPaneCtxt);
 
-	return <div {...props} onPointerDown={onMouseHoldDown} />;
+	return (
+		<div
+			{...props}
+			onPointerDown={onMouseHoldDown}
+			onClick={() => console.log("divider clicked")}
+		/>
+	);
 };
 
 export const SplitPaneLeft = (props) => {

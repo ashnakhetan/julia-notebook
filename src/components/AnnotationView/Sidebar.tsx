@@ -19,7 +19,7 @@ export function Sidebar({
 	saveHighlights,
 }: Props) {
 	return (
-		<div className="sidebar" style={{ width: "25vw" }}>
+		<div className="sidebar">
 			<ul className="sidebar__highlights">
 				{highlights.map((highlight, index) => (
 					<li
@@ -30,12 +30,12 @@ export function Sidebar({
 						}}
 					>
 						<div>
-							<strong>{highlight.comment.text}</strong>
 							{highlight.content.text ? (
 								<blockquote style={{ marginTop: "0.5rem" }}>
 									{highlight.content.text}
 								</blockquote>
 							) : null}
+
 							{highlight.content.image ? (
 								<div
 									className="highlight__image"
@@ -55,12 +55,14 @@ export function Sidebar({
 								</div>
 							) : null}
 						</div>
+
 						<div className="highlight__location">
 							Page {highlight.position.pageNumber}
 						</div>
 					</li>
 				))}
 			</ul>
+
 			<button onClick={saveHighlights}>save highlights</button>
 		</div>
 	);
