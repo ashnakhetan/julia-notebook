@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "target": "ES2015",
+    "moduleResolution": "Node",
+  },
+  "include": [ "./components/AnnotationView/react-pdf-highlighter" ]
+
+}

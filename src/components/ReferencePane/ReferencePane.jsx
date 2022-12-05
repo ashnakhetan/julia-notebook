@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
-import { getAnnotationsDummy } from "../../data/dummy-annotations";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import bayes from "../../data/Bayes' Theorem.pdf";
 import NoteTakingPaneCtxt from "../NoteTakingPaneCtxt";
 import ReferencePaneCtxt from "../ReferencePaneCtxt";
+import AnnotationView from "../AnnotationView/AnnotationView.tsx";
 
 export default function ReferencePane(props) {
 	const { isPDFview } = useContext(ReferencePaneCtxt);
@@ -21,12 +21,6 @@ export default function ReferencePane(props) {
 
 	return (
 		<div className="referencePane">
-			{/* <ul>
-				{annotations.map((annotation, index) => {
-					return <li key={index}>{annotation.color}</li>;
-				})}
-			</ul> */}
-
 			{isPDFview ? (
 				<Document
 					file={bayes}
@@ -43,7 +37,10 @@ export default function ReferencePane(props) {
 					))}
 				</Document>
 			) : (
-				<h1>annotation view</h1>
+				<>
+					<h1>annotation view</h1>
+					<AnnotationView />
+				</>
 			)}
 		</div>
 	);
