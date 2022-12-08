@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import {
 	PdfLoader,
 	PdfHighlighter,
@@ -20,6 +20,10 @@ interface State {
 	highlights: Array<IHighlight>;
 }
 
+type Props = {
+	currentPDF: string;
+};
+
 const getNextId = () => String(Math.random()).slice(2);
 
 const parseIdFromHash = () =>
@@ -40,18 +44,13 @@ const HighlightPopup = ({
 		</div>
 	) : null;
 
-const PRIMARY_PDF_URL = "https://arxiv.org/pdf/1708.08021.pdf";
-const SECONDARY_PDF_URL = "https://arxiv.org/pdf/1604.02480.pdf";
-
-const initialUrl = PRIMARY_PDF_URL;
-
-export default class PDFView extends Component<{}, State> {
+export default class PDFView extends Component<Props, State> {
 	// Load highlights from localStorage (if exist)
 	state = {
-		url: initialUrl,
-		highlights: localStorage.getItem(initialUrl)
-			? JSON.parse(localStorage.getItem(initialUrl))
-			: testHighlights[initialUrl],
+		url: this.props.currentPDF,
+		highlights: localStorage.getItem(this.props.currentPDF)
+			? JSON.parse(localStorage.getItem(this.props.currentPDF))
+			: [],
 	};
 
 	resetHighlights = () => {
@@ -65,6 +64,7 @@ export default class PDFView extends Component<{}, State> {
 		localStorage.setItem(this.state.url, JSON.stringify(this.state.highlights));
 	};
 
+	// TODO: remove this
 	toggleDocument = () => {
 		const newUrl =
 			this.state.url === PRIMARY_PDF_URL ? SECONDARY_PDF_URL : PRIMARY_PDF_URL;

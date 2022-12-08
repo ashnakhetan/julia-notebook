@@ -63,7 +63,7 @@ export function Sidebar({
 				))}
 			</ul>
 
-			<button onClick={saveHighlights}>save highlights</button>
+			{/* <button onClick={saveHighlights}>save highlights</button> */}
 		</div>
 	);
 }
