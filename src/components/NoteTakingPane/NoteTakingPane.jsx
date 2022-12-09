@@ -1,15 +1,16 @@
 import { React, useContext } from "react";
 import { useState, useRef } from "react";
 import { Stage, Layer, Line, Text, Rect } from "react-konva";
+import { AppContext } from "../../App";
 import brush from "../../assets/icons/brush.svg";
 import circle from "../../assets/icons/circle.svg";
 import eraser from "../../assets/icons/eraser.svg";
 import rectangle from "../../assets/icons/rectangle.svg";
 import triangle from "../../assets/icons/triangle.svg";
-import ReferencePaneCtxt from "../ReferencePaneCtxt";
+import "./NoteTakingPane.css";
 
 export default function NoteTakingPane() {
-	const { isPDFview, setIsPDFview } = useContext(ReferencePaneCtxt);
+	const { isPDFview, setIsPDFview } = useContext(AppContext);
 
 	const [tool, setTool] = useState("pen");
 	const [lines, setLines] = useState([]);

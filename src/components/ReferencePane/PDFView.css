@@ -1,3 +1,11 @@
 .PdfHighlighter {
 	width: 100%;
 }
+
+.PdfHighlighter .pdfViewer .page {
+	/* Overwriting the default styles to reclaim some space */
+	padding: 0;
+	border: 1px solid black;
+	border-image: none;
+	margin: 0;
+}

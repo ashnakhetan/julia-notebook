@@ -1,94 +1,4 @@
-body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
-}
-
-html,
-body {
-	padding: 0;
-	margin: 0;
-}
-
-.App {
-	font-family: "Segoe UI", sans-serif;
-	font-size: 1.2rem;
-	text-align: center;
-	overflow: hidden;
-}
-
-/* ########################### Split Pane Stuff ########################## */
-.split-pane-col {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
-}
-
-.split-pane-row {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: row;
-	margin: 0;
-	padding: 0;
-}
-
-.split-pane-left {
-	flex: 1;
-	overflow-y: scroll;
-	margin: 0;
-	padding: 0;
-}
-
-.split-pane-right {
-	overflow: hidden;
-	flex: 1;
-	margin: 0;
-	padding: 0;
-}
-
-.split-pane-top,
-.split-pane-bottom {
-	background-color: #ccc;
-	text-align: left;
-	padding: 2%;
-}
-
-.separator-col {
-	border: 5px solid black;
-	cursor: col-resize;
-	width: 30px;
-	/* Because we're handling it */
-	touch-action: none;
-}
-
-.separator-row {
-	border: 5px solid black;
-	cursor: row-resize;
-}
-
-.noteTakingPane {
-	/* Because we're handling it */
-	touch-action: none;
-}
-
-.referencePane {
-	/* Because we're handling it */
-	touch-action: none;
-	position: relative;
-}
-
+/* ########################### Notebook Paper / Whiteboard ########################## */
 .konvajs-content {
 	/* Because we're handling it */
 	touch-action: none;
@@ -103,6 +13,7 @@ body {
 		),
 		linear-gradient(#eee 0.1em, transparent 0.1em);
 	background-size: 100% 1.2em;
+	border-left: 2px solid #829ea2;
 }
 
 /* ########################### Writing Toolbar Stuff ########################## */
