@@ -18,18 +18,18 @@ body {
 	/* Because we're handling it */
 	touch-action: none;
 	overflow: hidden;
-	border: 5px solid black;
-	width: 40vw;
 	margin: 0;
 	padding: 0;
-	flex: 1;
 }
 
 .noteTakingPane {
 	overflow: hidden;
+	flex: auto;
 }
 
 .referencePane {
 	overflow-y: scroll;
 	position: relative;
+	/* the smallest value that doesn't overflow */
+	width: calc(43vw - 120px);
 }
