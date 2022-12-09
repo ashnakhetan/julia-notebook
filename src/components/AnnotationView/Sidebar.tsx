@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import type { IHighlight } from "./react-pdf-highlighter";
+import { AppContext } from "../../App";
 
 interface Props {
 	highlights: Array<IHighlight>;
@@ -18,6 +19,8 @@ export function Sidebar({
 	resetHighlights,
 	saveHighlights,
 }: Props) {
+	const { setIsPDFview } = useContext(AppContext);
+
 	return (
 		<div className="sidebar">
 			<ul className="sidebar__highlights">
@@ -27,6 +30,7 @@ export function Sidebar({
 						className="sidebar__highlight"
 						onClick={() => {
 							updateHash(highlight);
+							setIsPDFview(true);
 						}}
 					>
 						<div>

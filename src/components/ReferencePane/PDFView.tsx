@@ -76,6 +76,8 @@ export default class PDFView extends Component<Props, State> {
 			this.scrollToHighlightFromHash,
 			false
 		);
+		// Do it if one exists, in case we just came from annotation view
+		this.scrollToHighlightFromHash();
 	}
 
 	getHighlightById(id: string) {
