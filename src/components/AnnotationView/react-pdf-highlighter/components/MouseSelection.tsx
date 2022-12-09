@@ -109,6 +109,17 @@ class MouseSelection extends Component<Props, State> {
 		});
 
 		container.addEventListener("pointerdown", (event: PointerEvent) => {
+			console.log(event);
+
+			if (event.pointerType === "touch") {
+				container.classList.add("touchDefault");
+				container.classList.remove("touchNone");
+			} else {
+				container.classList.remove("touchDefault");
+				container.classList.add("touchNone");
+			}
+
+			// This is where we can intercept the touch if we don't want to draw a highlight -- i.e., if we're scrolling
 			if (!shouldStart(event)) {
 				this.reset();
 				return;

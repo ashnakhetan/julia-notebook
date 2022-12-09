@@ -36,3 +36,11 @@ body {
 	/* the smallest value that doesn't overflow */
 	width: calc(43vw - 120px);
 }
+
+/* For turning default touch on and off */
+.touchDefault {
+	touch-action: default;
+}
+.touchNone {
+	touch-action: none;
+}

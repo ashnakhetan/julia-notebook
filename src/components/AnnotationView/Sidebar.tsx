@@ -42,16 +42,9 @@ export function Sidebar({
 									style={{
 										marginTop: "0.5rem",
 										touchAction: "default",
-										width: "-webkit-fill-available",
 									}}
 								>
-									<img
-										src={highlight.content.image}
-										style={{
-											width: "-webkit-fill-available",
-										}}
-										alt={"Screenshot"}
-									/>
+									<img src={highlight.content.image} alt={"Screenshot"} />
 								</div>
 							) : null}
 						</div>
