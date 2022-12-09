@@ -20,6 +20,9 @@ body {
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
+	/* Don't allow text selection (on iPad, pulls up the context menu) */
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 .noteTakingPane {
