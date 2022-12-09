@@ -40,6 +40,7 @@ body {
 /* For turning default touch on and off */
 .touchDefault {
 	touch-action: default;
+	background-color: red !important;
 }
 .touchNone {
 	touch-action: none;

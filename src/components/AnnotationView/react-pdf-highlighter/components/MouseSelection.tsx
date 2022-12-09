@@ -114,6 +114,7 @@ class MouseSelection extends Component<Props, State> {
 			if (event.pointerType === "touch") {
 				container.classList.add("touchDefault");
 				container.classList.remove("touchNone");
+				return;
 			} else {
 				container.classList.remove("touchDefault");
 				container.classList.add("touchNone");
