@@ -182,6 +182,10 @@ export default function NoteTakingPane() {
 				onPointerDown={handleMouseDown}
 				onPointerMove={handleMouseMove}
 				onPointerUp={handleMouseUp}
+				onTouchStart={(e) => {
+					e.evt.preventDefault();
+					// to make the magnifier not show up
+				}}
 			>
 				<Layer>
 					{lines.map((line, i) => (

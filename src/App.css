@@ -30,16 +30,23 @@ body {
 	flex: auto;
 }
 
+.noteTakingPane * {
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: none;
+}
+
 .referencePane {
 	overflow-y: scroll;
 	position: relative;
-	/* the smallest value that doesn't overflow */
-	width: calc(43vw - 120px);
+	width: 50vh;
 }
 
 /* For turning default touch on and off */
 .touchDefault {
 	touch-action: initial !important;
+	user-select: none;
+	-webkit-user-select: none;
 }
 .touchNone {
 	touch-action: none;

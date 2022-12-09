@@ -109,13 +109,12 @@ class MouseSelection extends Component<Props, State> {
 		});
 
 		container.addEventListener("pointerdown", (event: PointerEvent) => {
-			console.log(event);
-
 			if (event.pointerType === "touch") {
 				container.classList.add("touchDefault");
 				container.classList.remove("touchNone");
 				return;
 			} else {
+				event.preventDefault();
 				container.classList.remove("touchDefault");
 				container.classList.add("touchNone");
 			}
