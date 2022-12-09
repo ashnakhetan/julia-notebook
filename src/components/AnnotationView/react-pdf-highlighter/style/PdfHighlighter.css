@@ -1,6 +1,7 @@
 .PdfHighlighter {
 	position: absolute;
-	overflow: auto;
+	/* Scrolling handled in the wrapper */
+	overflow: hidden;
 	/* Because we're handling it */
 	touch-action: none;
 }

@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 import {
 	PdfLoader,
 	PdfHighlighter,
@@ -10,10 +10,7 @@ import type {
 	IHighlight,
 	NewHighlight,
 } from "../AnnotationView/react-pdf-highlighter/types";
-import { testHighlights as _testHighlights } from "../AnnotationView/test-highlights";
 import "./PDFView.css";
-
-const testHighlights: Record<string, Array<IHighlight>> = _testHighlights;
 
 interface State {
 	url: string;
@@ -60,19 +57,7 @@ export default class PDFView extends Component<Props, State> {
 	};
 
 	saveHighlights = () => {
-		console.log(this.state.highlights);
 		localStorage.setItem(this.state.url, JSON.stringify(this.state.highlights));
-	};
-
-	// TODO: remove this
-	toggleDocument = () => {
-		const newUrl =
-			this.state.url === PRIMARY_PDF_URL ? SECONDARY_PDF_URL : PRIMARY_PDF_URL;
-
-		this.setState({
-			url: newUrl,
-			highlights: testHighlights[newUrl] ? [...testHighlights[newUrl]] : [],
-		});
 	};
 
 	scrollViewerTo = (highlight: any) => {};
@@ -102,8 +87,6 @@ export default class PDFView extends Component<Props, State> {
 	addHighlight(highlight: NewHighlight) {
 		const { highlights } = this.state;
 
-		console.log("Saving highlight", highlight);
-
 		this.setState({
 			highlights: [{ ...highlight, id: getNextId() }, ...highlights],
 		});
@@ -112,8 +95,6 @@ export default class PDFView extends Component<Props, State> {
 	}
 
 	updateHighlight(highlightId: string, position: Object, content: Object) {
-		console.log("Updating highlight", highlightId, position, content);
-
 		this.setState({
 			highlights: this.state.highlights.map((h: any) => {
 				const {
