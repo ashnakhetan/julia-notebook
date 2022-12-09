@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/julia-notebook/static/css/main.cb4b15a7.css",
+    "main.css": "/julia-notebook/static/css/main.891ca08e.css",
     "main.js": "/julia-notebook/static/js/main.c2efbdc9.js",
     "static/media/bad_course_reader.pdf": "/julia-notebook/static/media/bad_course_reader.698f83ede4a750e9f884.pdf",
     "index.html": "/julia-notebook/index.html",
@@ -9,11 +9,11 @@
     "static/media/rectangle.svg": "/julia-notebook/static/media/rectangle.f41bba5e4ca4ded4e03f3791af613424.svg",
     "static/media/triangle.svg": "/julia-notebook/static/media/triangle.0a9a8ba15c9d3328d7f3a2b34c2e0d7c.svg",
     "static/media/circle.svg": "/julia-notebook/static/media/circle.7cb39a9a1213b227711aedf63d9b46e0.svg",
-    "main.cb4b15a7.css.map": "/julia-notebook/static/css/main.cb4b15a7.css.map",
+    "main.891ca08e.css.map": "/julia-notebook/static/css/main.891ca08e.css.map",
     "main.c2efbdc9.js.map": "/julia-notebook/static/js/main.c2efbdc9.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb4b15a7.css",
+    "static/css/main.891ca08e.css",
     "static/js/main.c2efbdc9.js"
   ]
 }
