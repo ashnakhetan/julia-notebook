@@ -1,12 +1,10 @@
-import "./App.css";
-import SplitPane, {
-	Divider,
-	SplitPaneLeft,
-	SplitPaneRight,
-} from "./components/SplitPane";
-import ReferencePaneCtxt from "./components/ReferencePaneCtxt";
-import { useState } from "react";
+import { useState, createContext } from "react";
+import NoteTakingPane from "./components/NoteTakingPane/NoteTakingPane";
+import ReferencePane from "./components/ReferencePane/ReferencePane";
 import pdf from "./data/PDFs/midtermFall2021.pdf";
+import "./App.css";
+
+export const AppContext = createContext();
 
 function App() {
 	const [isPDFview, setIsPDFview] = useState(true);
@@ -14,15 +12,12 @@ function App() {
 
 	return (
 		<div className="App">
-			<ReferencePaneCtxt.Provider
+			<AppContext.Provider
 				value={{ isPDFview, setIsPDFview, currentPDF, setCurrentPDF }}
 			>
-				<SplitPane className="split-pane-row">
-					<SplitPaneLeft />
-					<Divider className="separator-col" />
-					<SplitPaneRight />
-				</SplitPane>
-			</ReferencePaneCtxt.Provider>
+				<ReferencePane />
+				<NoteTakingPane />
+			</AppContext.Provider>
 		</div>
 	);
 }
