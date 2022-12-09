@@ -39,7 +39,7 @@ body {
 .referencePane {
 	overflow-y: scroll;
 	position: relative;
-	width: 50vh;
+	width: 80vh;
 }
 
 /* For turning default touch on and off */
