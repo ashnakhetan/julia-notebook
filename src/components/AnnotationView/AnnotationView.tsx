@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import type { IHighlight, NewHighlight } from "./react-pdf-highlighter/types";
-import { testHighlights as _testHighlights } from "./test-highlights";
 import { Sidebar } from "./Sidebar";
 import "./AnnotationView.css";
-
-const testHighlights: Record<string, Array<IHighlight>> = _testHighlights;
 
 interface State {
 	url: string;
@@ -53,16 +50,6 @@ export default class AnnotationView extends Component<Props, State> {
 	saveHighlights = () => {
 		console.log(this.state.highlights);
 		localStorage.setItem(this.state.url, JSON.stringify(this.state.highlights));
-	};
-
-	toggleDocument = () => {
-		const newUrl =
-			this.state.url === PRIMARY_PDF_URL ? SECONDARY_PDF_URL : PRIMARY_PDF_URL;
-
-		this.setState({
-			url: newUrl,
-			highlights: testHighlights[newUrl] ? [...testHighlights[newUrl]] : [],
-		});
 	};
 
 	scrollViewerTo = (highlight: any) => {};
