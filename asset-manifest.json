@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/julia-notebook/static/css/main.73ca37cc.css",
+    "main.css": "/julia-notebook/static/css/main.16799f86.css",
     "main.js": "/julia-notebook/static/js/main.1e5686f8.js",
     "static/media/midtermFall2021.pdf": "/julia-notebook/static/media/midtermFall2021.5e183e74a70fde9de291.pdf",
     "index.html": "/julia-notebook/index.html",
@@ -9,11 +9,11 @@
     "static/media/rectangle.svg": "/julia-notebook/static/media/rectangle.f41bba5e4ca4ded4e03f3791af613424.svg",
     "static/media/triangle.svg": "/julia-notebook/static/media/triangle.0a9a8ba15c9d3328d7f3a2b34c2e0d7c.svg",
     "static/media/circle.svg": "/julia-notebook/static/media/circle.7cb39a9a1213b227711aedf63d9b46e0.svg",
-    "main.73ca37cc.css.map": "/julia-notebook/static/css/main.73ca37cc.css.map",
+    "main.16799f86.css.map": "/julia-notebook/static/css/main.16799f86.css.map",
     "main.1e5686f8.js.map": "/julia-notebook/static/js/main.1e5686f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.73ca37cc.css",
+    "static/css/main.16799f86.css",
     "static/js/main.1e5686f8.js"
   ]
 }
