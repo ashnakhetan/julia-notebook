@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
 import NoteTakingPane from "./components/NoteTakingPane/NoteTakingPane";
 import ReferencePane from "./components/ReferencePane/ReferencePane";
-import pdf from "./data/PDFs/bad_course_reader.pdf";
+import pdf from "./data/PDFs/CS109-Welcome.pdf";
 import "./App.css";
 
 export const AppContext = createContext();
