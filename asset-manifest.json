@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/julia-notebook/static/css/main.891ca08e.css",
-    "main.js": "/julia-notebook/static/js/main.074b86ee.js",
-    "static/media/bad_course_reader.pdf": "/julia-notebook/static/media/bad_course_reader.698f83ede4a750e9f884.pdf",
+    "main.js": "/julia-notebook/static/js/main.183de571.js",
+    "static/media/CS109-Welcome.pdf": "/julia-notebook/static/media/CS109-Welcome.719871a03510a3058dbd.pdf",
     "index.html": "/julia-notebook/index.html",
     "static/media/brush.svg": "/julia-notebook/static/media/brush.4d01c460f6ac057b8187ce117b50dca4.svg",
     "static/media/eraser.svg": "/julia-notebook/static/media/eraser.bab502fe7e62bfef27259bac73c3a668.svg",
@@ -10,10 +10,10 @@
     "static/media/triangle.svg": "/julia-notebook/static/media/triangle.0a9a8ba15c9d3328d7f3a2b34c2e0d7c.svg",
     "static/media/circle.svg": "/julia-notebook/static/media/circle.7cb39a9a1213b227711aedf63d9b46e0.svg",
     "main.891ca08e.css.map": "/julia-notebook/static/css/main.891ca08e.css.map",
-    "main.074b86ee.js.map": "/julia-notebook/static/js/main.074b86ee.js.map"
+    "main.183de571.js.map": "/julia-notebook/static/js/main.183de571.js.map"
   },
   "entrypoints": [
     "static/css/main.891ca08e.css",
-    "static/js/main.074b86ee.js"
+    "static/js/main.183de571.js"
   ]
 }
